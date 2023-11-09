@@ -58,6 +58,7 @@ a {
 @media screen and (max-width: 768px) {
   .wrapper {
     max-width: 640px;
+    padding: 0;
   }
 }
 @media screen and (max-width: 640px) {

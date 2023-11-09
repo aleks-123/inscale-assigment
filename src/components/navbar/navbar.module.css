@@ -28,6 +28,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .container {
+    margin: 0 30px;
+  }
+
   .logo {
     text-align: center;
     font-size: 1.8rem;

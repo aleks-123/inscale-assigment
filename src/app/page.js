@@ -1,95 +1,76 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
+
+import Link from 'next/link';
+import styles from './page.module.css';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '@/components/authProvider/AuthProvider';
+import DestinationCard from '@/components/destinationCard/DestinationCard';
+import DestinationList from '@/components/destinationList/DestinationList';
 
 export default function Home() {
+  const itemsPerPage = 8;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [paginatedData, setPaginatedData] = useState([]);
+
+  const { loggedIn } = useContext(AuthContext);
+  const [destinations, setDestinations] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (loggedIn) {
+      setLoading(true);
+      setError(null);
+      const fetchDestinations = async () => {
+        try {
+          const response = await fetch(
+            'https://book.tripx.se/wp-json/tripx/v1/destinations'
+          );
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          console.log(data);
+          setDestinations(data);
+        } catch (error) {
+          setError('Could not fetch destinations: ' + error.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchDestinations();
+    }
+  }, [loggedIn]);
+
+  // Determine the slice of data to show
+
+  const goToPage = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    <div className={styles.component}>
+      {!loggedIn && (
+        <>
+          <h2>If you want to see our destination you must be logged in</h2>
+          <div>
+            <span className={styles.loginLink}>
+              <Link href='/login'>Login page</Link>
+            </span>
+          </div>
+        </>
+      )}
+      {loggedIn && (
+        <>
+          <DestinationList
+            destinations={destinations}
+            itemsPerPage={itemsPerPage}
+            currentPage={currentPage}
+            goToPage={goToPage}
+          />
+        </>
+      )}
+    </div>
+  );
 }

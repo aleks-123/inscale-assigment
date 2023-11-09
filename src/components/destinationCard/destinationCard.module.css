@@ -1,0 +1,13 @@
+@media (max-width: 1400px) {
+  .thumbnailImage {
+    width: 20vw;
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .thumbnailImage {
+    width: 30vw;
+    height: 100px;
+  }
+}

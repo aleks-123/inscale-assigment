@@ -7,13 +7,13 @@
 
 .logo {
   text-align: center;
-  font-size: 36px;
+  font-size: 3.6rem;
   font-weight: bold;
 }
 
 .links {
   display: flex;
-  font-size: 20px;
+  font-size: 2.2rem;
   gap: 20px;
 }
 
@@ -25,4 +25,17 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  .links {
+    display: flex;
+    font-size: 1.2rem;
+    gap: 20px;
+  }
 }

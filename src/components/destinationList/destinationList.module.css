@@ -19,11 +19,10 @@
   gap: 10px;
 }
 
-/* Pagination Buttons */
 .pagination button {
-  background-color: #f0f0f0;
-  border: 1px solid #dcdcdc;
-  color: #333;
+  background-color: var(--textLightGray);
+  border: 1px solid var(--textLightGray);
+  color: black;
   border-radius: 5px;
   padding: 10px 15px;
   cursor: pointer;
@@ -31,13 +30,18 @@
 }
 .pagination button:hover,
 .pagination button:focus {
-  background-color: #e0e0e0;
+  background-color: var(--textLightGray);
   transform: scale(-2px);
 }
 .pagination button.activePage {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
+  background-color: var(--buttonColorLight);
+  color: var(--textLightGray);
+  border-color: var(--buttonColorLight);
+}
+
+.bookingCode {
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {
@@ -48,5 +52,10 @@
   .container {
     height: auto;
     align-items: start;
+  }
+  .bookingCode {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
   }
 }

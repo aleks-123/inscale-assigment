@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <Link href='/'> Inscale</Link>
+        <Link href='/'> INSCALE</Link>
       </div>
       <div className={styles.links}>
         <Link href='/'>Destination</Link>

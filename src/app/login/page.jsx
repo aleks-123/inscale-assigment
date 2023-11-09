@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '@/components/authProvider/AuthProvider';
 import styles from './login.module.css';
 import { useRouter } from 'next/navigation';
@@ -75,9 +75,11 @@ function Login() {
     }
   };
 
-  if (loggedIn) {
-    router.push('/');
-  }
+  useEffect(() => {
+    if (loggedIn) {
+      router.push('/');
+    }
+  }, [loggedIn, router]);
 
   return (
     <div className={styles.component}>

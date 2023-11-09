@@ -29,7 +29,9 @@ const DestinationList = ({
 
   return (
     <div className={styles.container}>
-      {bookingCode && <h3>Booking Code: {bookingCode}</h3>}
+      {bookingCode && (
+        <p className={styles.bookingCode}>Booking Code: {bookingCode}</p>
+      )}
       <div className={styles.cardContainer}>
         {currentItems.map((item) => (
           <DestinationCard key={item.slug} destination={item} />

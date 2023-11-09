@@ -9,6 +9,7 @@ function DestinationCard({ destination }) {
       <Image
         className={styles.thumbnailImage}
         src={destination.thumbnail}
+        alt={destination.name}
         width={330}
         height={200}
       />

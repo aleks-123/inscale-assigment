@@ -1,16 +1,19 @@
 :root {
-  --bg: rgb(255, 255, 255);
-  --textColor: black;
-  --softBg: #f0f0f0;
-  --softTextColor: #626262;
-
-  --bgGradient: ;
+  --bg: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 50%);
+  --textLightGray: rgb(230, 230, 230);
+  --buttonColorLight: rgb(138, 71, 206);
+  --buttonColorDark: rebeccapurple;
+  --buttonDisabled: rgb(148, 148, 148);
 }
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {
@@ -25,12 +28,8 @@ a {
 
 .container {
   min-height: 100vh;
-  background-image: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 50%
-  );
-  color: white;
+  background-image: var(--bg);
+  color: var(--textLightGray);
 }
 
 .wrapper {
@@ -54,7 +53,6 @@ a {
 @media screen and (max-width: 1024px) {
   .wrapper {
     max-width: 768px;
-    padding: 0 40px;
   }
 }
 @media screen and (max-width: 768px) {

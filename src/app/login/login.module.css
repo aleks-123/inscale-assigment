@@ -23,13 +23,13 @@
   font-size: 20px;
   margin-top: 10px;
   border-radius: 5px;
-  border: 1px solid gray;
+  border: 1px solid var(--textLightGray);
 }
 
 .label {
   font-size: 20px;
   margin-top: 20px;
-  color: lightgray;
+  color: var(--textLightGray);
 }
 
 .span {
@@ -40,8 +40,9 @@
 }
 
 .checkbox {
-  color: lightgray;
+  color: var(--textLightGray);
   margin-left: 10px;
+  font-size: 1.8rem;
 }
 
 .button {
@@ -49,8 +50,8 @@
   height: 50px;
   padding: 10px;
   border: none;
-  background-color: rebeccapurple;
-  color: white;
+  background-color: var(--buttonColorDark);
+  color: var(--textLightGray);
   border-radius: 5px;
   font-weight: bold;
   font-size: 18px;
@@ -60,7 +61,7 @@
 }
 
 .button:hover {
-  background-color: rgb(138, 71, 206);
+  background-color: var(--buttonColorLight);
   scale: 1;
 }
 
@@ -69,7 +70,7 @@
 }
 
 .button:disabled {
-  background-color: #ccc;
+  background-color: var(--buttonDisabled);
   cursor: default;
   scale: 1;
 }
@@ -77,4 +78,5 @@
 .error {
   color: red;
   margin: 5px 0;
+  font-size: 1.5rem;
 }

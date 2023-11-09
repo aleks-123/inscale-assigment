@@ -5,36 +5,31 @@
   justify-content: center;
   align-items: center;
   gap: 40px;
+  font-size: 2.2rem;
 }
 
 .loginLink {
   width: 100%;
   height: 50px;
-  padding: 10px;
+  padding: 1rem;
   border: none;
-  background-color: rebeccapurple;
-  color: white;
+  background-color: var(--buttonColorDark);
+  color: var(--textLightGray);
   border-radius: 5px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 2rem;
   cursor: pointer;
   margin-top: 15px;
   margin-bottom: 30px;
 }
 
 .loginLink:hover {
-  background-color: rgb(138, 71, 206);
+  background-color: var(--buttonColorLight);
   scale: 1;
-}
-
-.card {
-  display: flex;
-  flex-wrap: wrap;
-  height: 60vh;
 }
 
 @media (max-width: 1000px) {
   .component {
-    height: auto; /* Set to auto for variable height based on content */
+    min-height: auto;
   }
 }

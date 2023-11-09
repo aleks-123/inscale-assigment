@@ -9,13 +9,13 @@ import DestinationList from '@/components/destinationList/DestinationList';
 
 export default function Home() {
   const itemsPerPage = 8;
-  const [currentPage, setCurrentPage] = useState(1);
-  const [paginatedData, setPaginatedData] = useState([]);
 
-  const { loggedIn } = useContext(AuthContext);
+  const [currentPage, setCurrentPage] = useState(1);
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const { loggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     if (loggedIn) {
@@ -30,7 +30,6 @@ export default function Home() {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
           const data = await response.json();
-          console.log(data);
           setDestinations(data);
         } catch (error) {
           setError('Could not fetch destinations: ' + error.message);
@@ -61,6 +60,8 @@ export default function Home() {
           </div>
         </>
       )}
+      {loading && <p>Loading destinations...</p>}
+      {error && <p>{error}</p>}
       {loggedIn && (
         <>
           <DestinationList

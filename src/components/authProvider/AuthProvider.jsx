@@ -70,6 +70,7 @@ const useAuth = () => {
         setLoginAttempts(0);
       } else if (response.status === 400) {
         setNotification('Invalid username or password. Please try again.');
+        handleFailedLogin();
       } else if (response.status === 500) {
         setNotification('A server error occurred. Please try again later.');
       } else {

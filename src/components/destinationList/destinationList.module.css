@@ -46,13 +46,19 @@
 
 @media (max-width: 768px) {
   .cardContainer {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 0.3fr);
+    grid-template-rows: repeat(2, 1fr);
   }
   .container {
-    min-height: auto;
+    min-height: 600;
+    overflow-y: auto;
     align-items: start;
   }
+
+  .container::-webkit-scrollbar {
+    width: 1px;
+  }
+
   .bookingCode {
     font-size: 1.2rem;
     font-weight: 500;
